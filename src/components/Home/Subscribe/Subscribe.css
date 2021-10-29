@@ -1,0 +1,22 @@
+.subscribe{
+    background-color: rgb(181, 190, 144);
+}
+
+input{
+    border: none;
+    background: rgb(52, 78, 65);
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+button{
+    border: none;
+    background-color: rgb(52, 78, 65);
+    border-radius: 15px;
+    color: rgb(216, 216, 216);
+}
+
+::placeholder{
+    color: rgb(216, 216, 216);
+    opacity: 1;
+}

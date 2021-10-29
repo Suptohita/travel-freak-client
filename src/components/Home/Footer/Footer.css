@@ -1,0 +1,14 @@
+.footer-div{
+    background-color: rgb(218,215,205);
+}
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+h6:hover{
+    color: tomato;
+    cursor: pointer;
+}
