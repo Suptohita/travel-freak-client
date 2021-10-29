@@ -3,3 +3,10 @@
     color: whitesmoke;
 }
 
+.link{
+    text-decoration: none;
+    color: black;
+}
+.link:hover{
+    color: black;
+}
