@@ -17,18 +17,19 @@ const useFirebase = () => {
     const signInWithGoogle = () =>{
 
         setIsLoding(true)
-
-        return signInWithPopup(auth, googleProvider)   
-        .then(result => {
-            setUser(result.user)
-        })
-        .catch((error) =>{
-            setError(error)
-        })
-        .finally(() => setIsLoding(false))
+        return signInWithPopup(auth, googleProvider)
+        
 
         // (alternative process go_to:Login.js)
-        // return signInWithGoogle
+        // return signInWithPopup(auth, googleProvider)   
+        // .then(result => {
+        //     setUser(result.user)
+        // })
+        // .catch((error) =>{
+        //     setError(error)
+        // })
+        // .finally(() => setIsLoding(false))
+
     }
 
     // Log Out 

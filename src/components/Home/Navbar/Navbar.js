@@ -44,12 +44,15 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item ms-lg-5 text-light">
-                                <Link className='text-decoration-none' to='/aboutUs'>
+                                <Link className='text-decoration-none' to='/about'>
                                     <h6 className="nav-link text-light" href=" ">About Us</h6>
                                 </Link>
                             </li>
 
                         </ul>
+
+                        
+                        {/* for display user name and logIn/logOut button  */}
                         {
                             user ? <button className="btn btn-outline-danger me-3 mb-3"><span className='link text-white'>Hi {user.displayName}</span></button>
                             :

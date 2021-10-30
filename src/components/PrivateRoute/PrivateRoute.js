@@ -6,13 +6,17 @@ const PrivateRoute = ({children, ...rest}) => {
     const {user, isLoding} = useAuth()
 
    if (isLoding) {
+
+    // waiting for load user 
         return <div className='text-center'>
             <div className="spinner-grow spinner-grow-sm mt-5" role="status">
                 <span className="visually-hidden">Loading...</span>
             </div>
         </div>
     }
+
     return (
+        
         <Route {...rest} render={({ location }) => user
          ? 
          children : 
