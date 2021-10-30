@@ -8,7 +8,7 @@ const Destination = () => {
     useEffect(() => {
         fetch('https://suptohita-travel-server.herokuapp.com/destinations')
             .then(res => res.json())
-            .then(data => setDestinations(data))
+            .then(data => setDestinations(data.slice(0,6)))
     }, [])
 
     return (
@@ -32,10 +32,10 @@ const Destination = () => {
 
                                     <h5 className='mt-4 mb-2 fs-6'>{(destination.description).substring(0, 50)}....</h5>
 
-                                    <Link to={`/details/${destination.id}`}>
-
+                                    <Link to={`/placeOrder/${destination._id}`}>
                                         <button className='p-2 mt-2 btn btn-warning  fw-bold rounded-pill ps-3 pe-3'>Book For Ticket</button>
                                     </Link>
+
                                 </div>
                             </div>
                         </div>

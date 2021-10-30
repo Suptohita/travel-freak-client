@@ -9,6 +9,7 @@ import AddDestination from './components/AddDestination/AddDestination';
 import ManageAllOrders from './components/ManageAllOrders/ManageAllOrders';
 import About from './components/About/About';
 import NotFound from './components/NotFound/NotFound';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
           <Route path='/login'>
             <Login></Login>
           </Route>
+
+          <PrivateRoute path='/placeOrder/:destinationId'>
+            <PlaceOrder></PlaceOrder>
+          </PrivateRoute>
 
           <Route path="*">
             <NotFound></NotFound>
