@@ -10,30 +10,41 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider()
     const [user, setUser] = useState('')
     const [error, setError] = useState('')
+    const [isLoding, setIsLoding] = useState(true)
 
     // Google login 
 
     const signInWithGoogle = () =>{
-        signInWithPopup(auth, googleProvider)
+
+        setIsLoding(true)
+
+        return signInWithPopup(auth, googleProvider)   
         .then(result => {
             setUser(result.user)
         })
         .catch((error) =>{
             setError(error)
         })
+        .finally(() => setIsLoding(false))
+
+        // (alternative process go_to:Login.js)
+        // return signInWithGoogle
     }
 
     // Log Out 
     const logOut = () =>{
+        setIsLoding(true)
         signOut(auth)
-        .then(() => {
-            console.log('logout successfull')
-        })
+        .then(() => ({}))
+        .finally(() => setIsLoding(false))
     }
 
     // Auth Change 
 
     useEffect(() => {
+
+        setIsLoding(true)
+
         const unsubscribed = onAuthStateChanged(auth, user => {
             if(user){
                 setUser(user)
@@ -41,6 +52,7 @@ const useFirebase = () => {
             else{
                 setUser('')
             }
+            setIsLoding(false)
         })
 
         return() => unsubscribed
@@ -51,7 +63,10 @@ const useFirebase = () => {
         logOut,
         signInWithGoogle,
         user,
-        error
+        error,
+        isLoding,
+        setUser,
+        setError
     }
 
 }
