@@ -1,0 +1,7 @@
+.card-div{
+    background-color: rgb(245, 242, 236);
+}
+
+.card-div:hover{
+    background-color: rgb(243, 253, 219);
+}
