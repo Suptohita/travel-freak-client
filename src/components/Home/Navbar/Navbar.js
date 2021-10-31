@@ -39,7 +39,7 @@ const Navbar = () => {
                             {
                                 user ?
                                     <li className="nav-item ms-lg-5">
-                                        <Link className='text-decoration-none' to='/allOrders'>
+                                        <Link className='text-decoration-none' to='/manageAllOrders'>
                                             <h6 className="nav-link text-light" href=" ">Manage All Orders</h6>
                                         </Link>
                                     </li>
