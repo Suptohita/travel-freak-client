@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { user } = useAuth()
 
     useEffect(() => {
-        fetch('http://localhost:8000/myorders')
+        fetch('https://suptohita-travel-server.herokuapp.com/myorders')
             .then(res => res.json())
             .then(data => setUserOrders(data.filter(order => order.userName === user.displayName)))
     }, [])
@@ -20,7 +20,7 @@ const MyOrders = () => {
         if (proceed) {
 
             // fetch for delete user order 
-            fetch(`http://localhost:8000/myorders/deleteorder/${id}`, {
+            fetch(`https://suptohita-travel-server.herokuapp.com/myorders/deleteorder/${id}`, {
                 method: "DELETE",
                 headers: { "Content-type": "application/json" }
             })

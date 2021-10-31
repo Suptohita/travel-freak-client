@@ -14,7 +14,7 @@ const PlaceOrder = () => {
     const { user } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:8000/destinations/${destinationId}`)
+        fetch(`https://suptohita-travel-server.herokuapp.com/destinations/${destinationId}`)
             .then(res => res.json())
             .then(data => setDestinations(data))
     }, [])
@@ -38,12 +38,9 @@ const PlaceOrder = () => {
         const {name, image, price} = destinations
 
 
-        console.log(name)
-
-
         const data = { userName, email, name, person, date, image, price }
 
-        fetch('http://localhost:8000/booking', {
+        fetch('https://suptohita-travel-server.herokuapp.com/booking', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
