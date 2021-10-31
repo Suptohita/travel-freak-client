@@ -5,16 +5,50 @@ import Footer from '../Home/Footer/Footer';
 import Navbar from '../Home/Navbar/Navbar';
 
 
+
 const PlaceOrder = () => {
     const { destinationId } = useParams()
     const [destinations, setDestinations] = useState([])
-    const {user} = useAuth()
+    const [person, setPerson] = useState('')
+    const [date, setDate] = useState('')
+    const { user } = useAuth()
 
     useEffect(() => {
         fetch(`http://localhost:8000/destinations/${destinationId}`)
             .then(res => res.json())
             .then(data => setDestinations(data))
     }, [])
+
+
+
+    const personField = (e) => {
+        setPerson(e.target.value)
+    }
+
+
+    const dateField = (e) => {
+        setDate(e.target.value)
+    }
+
+
+    const handleBooking = () => {
+        const name = user.displayName
+        const email = user.email
+        const destination = destinations.name
+
+
+        const data = { name, email, destination, person, date }
+        
+        fetch('http://localhost:8000/booking', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+    }
+
 
     return (
 
@@ -24,7 +58,7 @@ const PlaceOrder = () => {
                 <div className='text-center'>
                     <img className='img-fluid rounded-3' src={destinations.image} alt="" />
                 </div>
-                
+
                 <div className='rounded-3 mt-3 mb-2 d-flex flex-wrap container'>
                     <div className='ps-3 ms-5 me-3 fs-6'>
                         <h1 className='text-center'>{destinations.name}</h1>
@@ -34,13 +68,23 @@ const PlaceOrder = () => {
                             <h5>${destinations.price}</h5>
                         </div>
                     </div>
-                    <div className='container mt-3 mb-5' style={{width:'50%'}}>
+
+                    <div className='container mt-3 mb-5' style={{ width: '50%' }}>
                         <h3 className='mb-3'><u>BookTicket :</u></h3>
-                        <input type='text' className='form-control mt-2 border-danger' value={user?.displayName}/>
-                        <input type='text' className='form-control mt-3 border-danger' value={user?.email}/>
-                        <input type='number' placeholder='Person' className='form-control mt-3'/>
-                        <input type='date' className='form-control mt-3'/>
-                        <div className='text-center mt-3'><button className='btn btn-secondary'>Book Now</button></div>
+
+                        <input type='text' className='form-control mt-2 border-danger' readOnly value={user?.displayName} />
+
+                        <input type='text' className='form-control mt-3 border-danger' readOnly value={user?.email} />
+
+                        <input type='number' onChange={personField} placeholder='Person' className='form-control mt-3' />
+
+                        <input type='date' onChange={dateField} placeholder='Person' className='form-control mt-3' />
+
+                        
+
+                        <div className='text-center mt-3'>
+                            <button onClick={handleBooking} className='btn btn-secondary'>Book Now</button>
+                        </div>
                     </div>
                 </div>
             </div>
