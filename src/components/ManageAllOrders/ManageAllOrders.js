@@ -6,7 +6,7 @@ const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:8000/manageallorders')
+        fetch('https://suptohita-travel-server.herokuapp.com/manageallorders')
         .then(res => res.json())
         .then(data => setAllOrders(data))
     },[])
@@ -16,7 +16,7 @@ const ManageAllOrders = () => {
         if (proceed) {
 
             // fetch for delete user order 
-            fetch(`http://localhost:8000/manageallorders/deleteorder/${id}`, {
+            fetch(`https://suptohita-travel-server.herokuapp.com/manageallorders/deleteorder/${id}`, {
                 method: "DELETE",
                 headers: { "Content-type": "application/json" }
             })
@@ -47,6 +47,9 @@ const ManageAllOrders = () => {
 
                                             <h3 className='fw-bold mb-3'>{allOrder.name}</h3>
                                             <h5 className='fs-5 fw-light'>Travel Date: {allOrder.date}</h5>
+
+                                            <h5 className='fs-5 fw-light'>User: {allOrder.userName}</h5>
+
                                             <h5 className='fs-5 fw-light'>Person: {allOrder.person}</h5>
                                             <h6 className='fw-normal'>${allOrder.price}</h6>
 
