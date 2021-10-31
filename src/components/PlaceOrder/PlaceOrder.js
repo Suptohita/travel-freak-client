@@ -32,12 +32,16 @@ const PlaceOrder = () => {
 
 
     const handleBooking = e => {
-        const name = user.displayName
+        const userName = user.displayName
         const email = user.email
-        const destination = destinations.name
+
+        const {name, image, price} = destinations
 
 
-        const data = { name, email, destination, person, date }
+        console.log(name)
+
+
+        const data = { userName, email, name, person, date, image, price }
 
         fetch('http://localhost:8000/booking', {
             method: "POST",
