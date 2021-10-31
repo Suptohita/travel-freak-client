@@ -31,14 +31,14 @@ const PlaceOrder = () => {
     }
 
 
-    const handleBooking = () => {
+    const handleBooking = e => {
         const name = user.displayName
         const email = user.email
         const destination = destinations.name
 
 
         const data = { name, email, destination, person, date }
-        
+
         fetch('http://localhost:8000/booking', {
             method: "POST",
             headers: {
@@ -47,6 +47,11 @@ const PlaceOrder = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
+            .then(data => {
+                if(data.insertedId) {
+                    alert('Successfully Added')
+                }
+            })
     }
 
 
@@ -80,7 +85,7 @@ const PlaceOrder = () => {
 
                         <input type='date' onChange={dateField} placeholder='Person' className='form-control mt-3' />
 
-                        
+
 
                         <div className='text-center mt-3'>
                             <button onClick={handleBooking} className='btn btn-secondary'>Book Now</button>
