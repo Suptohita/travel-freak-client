@@ -5,10 +5,12 @@
 
 * For install all neccessary package:- `npm i`
 * For run:- `npm start`
-
-* This is a travel booking site.
-* It's a fully responsive try out on small divice 😊
   
 
     ⚫ Used Technology: `react`, `react-router`, `firebase`, `bootstrap`, `css`, `heroku`, `mongodb`
 
+
+* It is a ticket booking website. It is a fully responsive website and semi-dynamic.
+* Users can sign up or log in using google. 
+* Users can book tickets for travel specific destination. Users can see and delete order their booked items from Manage all orders page.
+* You can add a destination and it’ll show on all destination page.
